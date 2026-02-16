@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iulia & Chahat — Wedding RSVP</title>
+
+  <!-- Elegant serif + clean sans (similar vibe to your screenshots) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f7f3ed;          /* warm off-white */
+      --card: #ffffff;
+      --ink: #222222;
+      --muted: #6b6b6b;
+      --line: #e9e2d9;
+      --dark: #2f2f2f;
+      --dark-ink: #f3f0ea;
+      --radius: 14px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    /* Layout */
+    .container{
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      padding: 56px 0;
+    }
+
+    /* Slightly tighter spacing on small screens */
+    @media (max-width: 520px){
+      .container{ padding: 40px 0; }
+      .section{ padding: 52px 0; }
+    }
+
+    .section{
+      padding: 64px 0;
+      border-top: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .center{ text-align: center; }
+
+    /* Hero */
+    .hero{
+      min-height: 92vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 56px 0 40px;
+    }
+
+    .hero-inner{
+      width: min(980px, 92vw);
+      text-align: center;
+    }
+
+    .kicker{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 36px;
+    }
+
+    h1{
+      font-family: "Bonheur Royale", cursive;
+      font-weight: 400;
+      font-style: normal;
+      font-size: clamp(54px, 7vw, 96px);
+      line-height: 0.95;
+      margin: 0 0 12px;
+    }
+
+    .subline{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 24px;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .date-line{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 30px;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn{
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.75);
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: transform .06s ease, background .18s ease, border-color .18s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn:hover{
+      background: #fff;
+      border-color: #dfd7cc;
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible,
+    .submit:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible{
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(215, 206, 194, 0.35);
+    }
+
+    .scroll-hint{
+      margin-top: 46px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .chev{
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.7);
+    }
+
+    /* Countdown */
+    .countdown-wrap{
+      display: grid;
+      place-items: center;
+      padding-top: 8px;
+    }
+
+    .countdown{
+      margin-top: 22px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      width: min(760px, 92vw);
+    }
+
+    .cd-box{
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+      border-radius: var(--radius);
+      padding: 18px 14px;
+    }
+
+    .cd-num{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .cd-lbl{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .note{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Location */
+    .icon{
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      background: rgba(255,255,255,0.65);
+    }
+
+    h2{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.2vw, 54px);
+      margin: 0 0 10px;
+    }
+
+    .lead{
+      color: var(--muted);
+      margin: 0 auto 28px;
+      width: min(68ch, 92vw);
+      font-size: 15px;
+    }
+
+    .map-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      border-radius: var(--radius);
+      overflow: hidden;
+      width: min(980px, 92vw);
+      margin: 0 auto;
+    }
+
+    .map-card iframe{
+      width: 100%;
+      height: 420px;
+      border: 0;
+      display: block;
+    }
+
+    /* RSVP Form */
+    .form-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      border-radius: var(--radius);
+      padding: 26px;
+      width: min(425px, 92vw);
+      margin: 0 auto;
+	  text-align:left;
+	  font-weight: 600;
+    }
+
+    /* One-column form layout */
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 760px){
+      .countdown{ grid-template-columns: repeat(2, 1fr); }
+      .map-card iframe{ height: 360px; }
+    }
+
+    @media (max-width: 520px){
+      .hero{ padding: 44px 0 28px; }
+      .kicker{ letter-spacing: 0.35em; margin-bottom: 26px; }
+      .subline{ font-size: 20px; }
+      .hero-actions{ flex-direction: column; align-items: stretch; }
+      .hero-actions .btn{ width: 100%; justify-content: center; padding: 14px 18px; }
+      .scroll-hint{ margin-top: 34px; }
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      textarea{ font-size: 16px; }
+      .map-card iframe{ height: 320px; }
+    }
+
+    label{
+      display: block;
+      font-size: 13px;
+      color: #353535;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+      background: #fff;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+
+    input:focus, textarea:focus{
+      border-color: #d7cec2;
+      box-shadow: 0 0 0 3px rgba(215, 206, 194, 0.25);
+    }
+
+    textarea{
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .radio-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 10px 0 2px;
+    }
+
+    .radio{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #2d2d2d;
+	  font-weight: 500;
+    }
+
+    input[type="radio"]{
+      width: 16px;
+      height: 16px;
+      accent-color: #333;
+    }
+
+    .submit{
+      margin-top: 16px;
+      width: 100%;
+      background: #2f2f2f;
+      color: var(--dark-ink);
+      border: 1px solid #2f2f2f;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform .06s ease, opacity .18s ease;
+    }
+
+    .submit:hover{ opacity: 0.95; transform: translateY(-1px); }
+
+    .success{
+      display: none;
+      margin-top: 14px;
+      padding: 12px 12px;
+      border: 1px solid #d7e7d6;
+      background: #f2fbf1;
+      border-radius: 12px;
+      color: #1f4d1f;
+      font-size: 12px;
+	  font-weight: 500;
+    }
+
+    /* Footer */
+    footer{
+      background: var(--dark);
+      color: var(--dark-ink);
+      padding: 56px 0;
+      margin-top: 30px;
+    }
+
+    .footer-inner{
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .heart{
+      display: inline-block;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .footer-title{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: 40px;
+      margin: 8px 0 10px;
+      font-weight: 500;
+    }
+
+    .footer-sub{
+      margin: 0 0 22px;
+      color: rgba(243,240,234,0.8);
+      font-size: 14px;
+    }
+
+    .contacts{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+      width: min(760px, 92vw);
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    @media (max-width: 760px){
+      .contacts{ grid-template-columns: 1fr; }
+    }
+
+    .contact-card{
+      border: 1px solid rgba(243,240,234,0.18);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+    }
+
+    .contact-name{
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      margin: 0 0 8px;
+      font-weight: 500;
+    }
+
+    .contact-line{
+      margin: 0;
+      color: rgba(243,240,234,0.85);
+      font-size: 14px;
+    }
+
+    .contact-line a{
+      color: rgba(243,240,234,0.92);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243,240,234,0.22);
+    }
+    .contact-line a:hover{ border-bottom-color: rgba(243,240,234,0.5); }
+	
+	/* Ensure radio + text are vertically centered */
+	.radio{
+	display: inline-flex;     /* (you already have this) */
+	align-items: center;      /* (you already have this) */
+	line-height: 1.0;         /* prevents the text from sitting higher */
+	}
+
+	.radio input[type="radio"]{
+	margin: 0;                /* removes default top/bottom offset */
+	vertical-align: middle;   /* helps in some browsers */
+	}
+
+	/* Optional micro-nudge if one browser still looks off */
+	@supports (transform: translateY(1px)) {
+	.radio input[type="radio"]{ transform: translateY(1px); }
+	}
+
+  </style>
+</head>
+
+<body>
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="kicker">RSVP</p>
+
+      <h1>Iulia &amp; Chahat</h1>
+
+      <p class="subline">are getting married</p>
+
+      <p class="date-line">on <strong>25 - 27 JANUARY, 2027</strong></p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#rsvp" aria-label="Jump to RSVP form">
+          <!-- paper plane icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 3L3.6 10.3c-.8.3-.8 1.4.1 1.6l7 1.8 1.8 7c.2.9 1.3.9 1.6.1L21 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10.7 13.7 21 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          RSVP now
+        </a>
+        <a class="btn" href="#location" aria-label="Jump to location section">
+          <!-- pin icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" />
+            <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="currentColor" stroke-width="1.6" />
+          </svg>
+          View location
+        </a>
+      </div>
+
+      <a class="scroll-hint" href="#countdown" aria-label="Scroll to countdown">
+        <span class="chev" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        Scroll down
+      </a>
+    </div>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <section class="section" id="countdown">
+    <div class="container center countdown-wrap">
+      <div class="icon" aria-hidden="true">
+        <!-- small heart icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M12 20.7c-3.9-2.3-8.9-6.3-10.2-10C.8 7.5 3.1 5.2 6 5.2c1.9 0 3.5 1 4.1 2.4.6-1.4 2.2-2.4 4.1-2.4 2.9 0 5.2 2.3 4.2 5.5-1.3 3.7-6.3 7.7-10.2 10Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <h2>Countdown</h2>
+      <p class="lead">Counting down to <strong>25 January 2027</strong>.</p>
+
+      <div class="countdown" role="group" aria-label="Countdown timer">
+        <div class="cd-box">
+          <p class="cd-num" id="cd-days">—</p>
+          <p class="cd-lbl">Days</p>
+        </div>
+        <div class="cd-box">
+          <p class="cd-num" id="cd-hours">—</p>
+          <p class="cd-lbl">Hours</p>
+        </div>
+        <div class="cd-box">
+          <p class="cd-num" id="cd-mins">—</p>
+          <p class="cd-lbl">Minutes</p>
+        </div>
+        <div class="cd-box">
+          <p class="cd-num" id="cd-secs">—</p>
+          <p class="cd-lbl">Seconds</p>
+        </div>
+      </div>
+
+      <p class="note" id="cd-note"></p>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section" id="location">
+    <div class="container center">
+      <div class="icon" aria-hidden="true">
+        <!-- pin icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z" stroke="currentColor" stroke-width="1.6" />
+          <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="currentColor" stroke-width="1.6" />
+        </svg>
+      </div>
+
+      <h2>Location</h2>
+      <p class="lead">
+        <strong>Surat, India</strong><br>
+        We can’t wait to celebrate with you!
+      </p>
+
+      <div class="map-card" aria-label="Google map for Surat, India">
+        <!-- Simple embed without API key -->
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Surat%2C%20India&output=embed"
+          title="Map: Surat, India">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section" id="rsvp">
+    <div class="container center">
+      <h2>Confirm your attendance</h2>
+      <p class="lead">We hope to have you join us. Please RSVP below.</p>
+
+      <div class="form-card">
+        <form id="rsvpForm" novalidate>
+          <div class="grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" />
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <label>Are you attending?</label>
+            <div class="radio-row" role="radiogroup" aria-label="Attendance">
+              <label class="radio">
+                <input type="radio" name="attending" value="yes" required />
+                Yes, I will attend
+              </label>
+              <label class="radio">
+                <input type="radio" name="attending" value="no" required />
+                I will not be able to attend
+              </label>
+            </div>
+          </div>
+
+          <div id="attendingFields" style="margin-top:16px;">
+            <div class="grid">
+              <div>
+                <label for="guests">Number of attendees (incl you)</label>
+                <input id="guests" name="guests" type="number" min="1" step="1" value="1" required />
+              </div>
+
+              <div>
+                <label for="diet">Dietary restrictions</label>
+                <input id="diet" name="diet" type="text" placeholder="e.g., nut allergy, gluten-free..." />
+              </div>
+            </div>
+          </div>
+
+          <button class="submit" type="submit">
+            <!-- paper plane icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21 3L3.6 10.3c-.8.3-.8 1.4.1 1.6l7 1.8 1.8 7c.2.9 1.3.9 1.6.1L21 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M10.7 13.7 21 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            Send confirmation
+          </button>
+
+          <div class="success" id="successBox" role="status" aria-live="polite"></div>
+
+          <!--
+            Hook this form up to your backend by replacing the JS submit handler with:
+            - a POST to your API endpoint, or
+            - a form action to a service (Google Forms, Formspree, etc.)
+          -->
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="heart" aria-hidden="true">♥</div>
+      <div class="footer-title">Iulia &amp; Chahat</div>
+      <p class="footer-sub">25 - 27 January, 2027 · Surat, India</p>
+
+      <div class="contacts" aria-label="Contact details">
+        <div class="contact-card">
+          <p class="contact-name">Iulia</p>
+          <p class="contact-line">Email: <a href="mailto:emiuve77@gmail.com">emiuve77@gmail.com</a></p>
+          <p class="contact-line">Phone/WhatsApp: <a href="tel:+34641248673">+34 641 248 673</a></p>
+        </div>
+
+        <div class="contact-card">
+          <p class="contact-name">Chahat</p>
+          <p class="contact-line">Email: <a href="mailto:chahat@yourdomain.com">chahat.mandviwala@gmail.com</a></p>
+          <p class="contact-line">Phone/WhatsApp: <a href="tel:+46739586449">+46 739 586 449</a></p>
+        </div>
+      </div>
+
+      <p class="footer-sub" style="margin-top:22px; opacity:.85;">
+        With all our love
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ========= Countdown (target: 25 Jan 2027, India time) =========
+    // Using explicit offset (+05:30) keeps it stable regardless of viewer timezone.
+    const target = new Date("2027-01-25T00:00:00+05:30").getTime();
+
+    const elDays  = document.getElementById("cd-days");
+    const elHours = document.getElementById("cd-hours");
+    const elMins  = document.getElementById("cd-mins");
+    const elSecs  = document.getElementById("cd-secs");
+    const elNote  = document.getElementById("cd-note");
+
+    function pad(n){ return String(n).padStart(2, "0"); }
+
+    function tick(){
+      const now = Date.now();
+      let diff = target - now;
+
+      if (diff <= 0){
+        elDays.textContent = "0";
+        elHours.textContent = "00";
+        elMins.textContent = "00";
+        elSecs.textContent = "00";
+        elNote.textContent = "It’s wedding time! ♥";
+        return;
+      }
+
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / (3600 * 24));
+      const hours = Math.floor((sec % (3600 * 24)) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+
+      elDays.textContent = String(days);
+      elHours.textContent = pad(hours);
+      elMins.textContent = pad(mins);
+      elSecs.textContent = pad(secs);
+
+      elNote.textContent = "See you in Surat.";
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    // ========= RSVP form (client-side demo) =========
+    const form = document.getElementById("rsvpForm");
+    const successBox = document.getElementById("successBox");
+    const attendingFields = document.getElementById("attendingFields");
+    const guestsInput = document.getElementById("guests");
+    const dietInput = document.getElementById("diet");
+	const submitBtn = form.querySelector('button[type="submit"]');
+	let isSubmitting = false;
+	
+	// ========= Google Form hookup =========
+	const GOOGLE_FORM_ACTION_URL =
+	"https://docs.google.com/forms/d/e/1FAIpQLSeHLbdqVhRAGt6mOctxM4Ae_Slx6ZdTaP_b2goFCZBZ2U71aw/formResponse";
+
+	const GOOGLE_FORM_ENTRIES = {
+	name: "entry.404107953",
+	email: "entry.1372968889",
+	attending: "entry.785782573",
+	guests: "entry.1916444822",
+	diet: "entry.1394646180",
+	};
+
+	// IMPORTANT: must match your Google Form option text exactly
+	const GOOGLE_FORM_ATTENDING_VALUES = {
+	yes: "Yes, I will attend",
+	no: "I will not be able to attend",
+	};
+
+    function toggleAttendingFields(){
+      const attending = form.attending.value;
+
+      const isYes = attending === "yes";
+      const isNo  = attending === "no";
+
+      // Show extra fields ONLY when attending = yes (hide by default and when no is selected)
+	  attendingFields.style.display = isYes ? "" : "none";
+      guestsInput.disabled = isNo;
+      dietInput.disabled = isNo;
+
+      // Only require attendee count when attending = yes.
+      guestsInput.required = isYes;
+
+      if (isNo){
+        // Keep a safe default in case a backend expects the field.
+        guestsInput.value = 1;
+        dietInput.value = "";
+      }
+    }
+
+    // React to radio changes
+    form.querySelectorAll('input[name="attending"]').forEach((el) => {
+      el.addEventListener("change", toggleAttendingFields);
+    });
+
+    // Initial state (before any selection)
+    toggleAttendingFields();
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+	  
+	  // Stop here if native required fields are empty (prevents "Sending..." getting stuck)
+		if (!form.checkValidity()) {
+		form.reportValidity();
+		return;
+		}
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const attending = form.attending.value;
+      const guests = guestsInput.value;
+      const diet = dietInput.value.trim();
+
+      if (!name || !attending){
+        successBox.style.display = "block";
+        successBox.style.borderColor = "#f0c9c9";
+        successBox.style.background = "#fff4f4";
+        successBox.style.color = "#7a1f1f";
+        successBox.textContent = "Please complete the required fields (Name and Attendance).";
+        return;
+      }
+
+      if (attending === "yes"){
+        const n = Number(guests);
+        if (!Number.isFinite(n) || n < 1){
+          successBox.style.display = "block";
+          successBox.style.borderColor = "#f0c9c9";
+          successBox.style.background = "#fff4f4";
+          successBox.style.color = "#7a1f1f";
+          successBox.textContent = "Please enter the number of attendees (minimum 1).";
+          return;
+        }
+      }
+
+      // POST to Google Forms
+		const params = new URLSearchParams();
+		params.append(GOOGLE_FORM_ENTRIES.name, name);
+		params.append(GOOGLE_FORM_ENTRIES.email, email);
+
+		// Send the exact Google Form option text
+		params.append(
+		GOOGLE_FORM_ENTRIES.attending,
+		attending === "yes"
+			? GOOGLE_FORM_ATTENDING_VALUES.yes
+			: GOOGLE_FORM_ATTENDING_VALUES.no
+		);
+
+		// Only send guests/diet if attending=yes (matches your UI behavior)
+		if (attending === "yes") {
+		params.append(GOOGLE_FORM_ENTRIES.guests, String(guests));
+		params.append(GOOGLE_FORM_ENTRIES.diet, diet);
+		}
+
+		if (isSubmitting) return;
+		isSubmitting = true;
+
+		submitBtn.disabled = true;
+		const originalBtnHtml = submitBtn.innerHTML;
+		submitBtn.innerHTML = "Sending…";
+		
+		try {
+		  // no-cors: browser won’t let us read success/failure, but response is recorded
+		  fetch(GOOGLE_FORM_ACTION_URL, {
+			  method: "POST",
+			  mode: "no-cors",
+			  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			  body: params.toString(),
+		  });
+
+		  successBox.style.display = "block";
+		  successBox.style.borderColor = "#d7e7d6";
+		  successBox.style.background = "#f2fbf1";
+		  successBox.style.color = "#1f4d1f";
+
+		  if (attending === "yes") {
+			  const n = Number(guests);
+			  successBox.textContent =
+			  `Thank you, your RSVP has been submitted ` +
+			  `(${n} attendee${n === 1 ? "" : "s"}).`;
+		  } else {
+			  successBox.textContent =
+			  `Thank you, your RSVP has been submitted.`;
+		  }
+
+		  form.reset();
+		  guestsInput.value = 1;
+		  toggleAttendingFields();
+		  } finally {
+		  submitBtn.disabled = false;
+		  submitBtn.innerHTML = originalBtnHtml;
+		  isSubmitting = false;
+		  }
+    });
+  </script>
+</body>
+</html>
